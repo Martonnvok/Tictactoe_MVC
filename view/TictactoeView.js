@@ -1,16 +1,26 @@
 class TictactoeView {
-    divElem;
-    jel;
+    #divElem;
+    #jel;
+    #allapot;
     constructor(divElem, jel) {
-        this.divElem = divElem;
-        this.jel = jel
+        this.#divElem = divElem;
+        this.#jel = jel
+        this.#allapot = true;
         this.#htmlMegjelenites();
 
-        this.elem = $(".tictactoe");
+        this.elem = $(".tictactoe:last-child");
         this.pElem = this.elem.children("p");
         $(".tictactoe").on("click",() => {
-            this.#esemenyTrigger("click");
+            if (this.#allapot) {
+                this.#esemenyTrigger("click");
+                this.#allapot = false;
+            }
+            
         });
+    }
+
+    getIndex(){
+        return this.#jel;
     }
 
     setJel(jel){
@@ -19,11 +29,11 @@ class TictactoeView {
     #htmlMegjelenites() {
         let txt = `<div class ="tictactoe"><p class = "valtozzMeg"> X </p></div`;
 
-        this.divElem.append(txt);
+        this.#divElem.append(txt);
     }
 
     #esemenyTrigger(esemenyNev) {
-        const E = new CustomEvent(esemenyNev);
+        const E = new CustomEvent(esemenyNev, {detail: this});
         window.dispatchEvent(E);
     }
 }

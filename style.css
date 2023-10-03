@@ -1,4 +1,4 @@
-div{
+.valtozzMeg{
     border: 2px solid black;
     margin: auto;
     width: 50px;
@@ -12,4 +12,14 @@ p{
 body{
     margin: auto;
     width: 500px;
+}
+.valtozzMeg:hover{
+    background-color: bisque;
+}
+
+.tictactoe{
+    width: 160px;
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px;
 }

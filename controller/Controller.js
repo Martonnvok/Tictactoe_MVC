@@ -1,15 +1,17 @@
-import TictactoeView from "../view/TictactoeView.js";
+import JatekTerView from "../view/JatekTerView.js";
 import Modell from "../modell/Modell.js";
 
 class Controller {
 
     constructor() {
         const MODELL = new Modell();
-        const TICTACOE = new TictactoeView($(".tictactoe"), MODELL.getErtek());
+        const TICTACOE = new JatekTerView($(".tictactoe"));
 
-        $(window).on("click",() => {
-            MODELL.valtas();
-            TICTACOE.setJel(MODELL.getErtek());
+        $(window).on("click",(event) => {
+            console.log(event.detail);
+            MODELL.valtas(event.detail.getIndex());
+            event.detail.setJel(MODELL.getErtek());
+            console.log(MODELL.vegevanE());
         });
 
 
